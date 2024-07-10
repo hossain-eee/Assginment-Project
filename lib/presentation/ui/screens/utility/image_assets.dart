@@ -1,7 +1,13 @@
-class ImageAssets{
+class ImageAssets {
   ImageAssets._(); //singleton
-  static const String _imagePath ="assets/icons";
-  static const String bellSvg = "$_imagePath/bell.svg";
-  static const String demo1Svg = "$_imagePath/demo1.png";
-  static const String menuSvg = "$_imagePath/menu.svg";
+  //icon
+  static const String _iconPath = "assets/icons";
+  static const String bellSvg = "$_iconPath/bell.svg";
+  static const String demo1Svg = "$_iconPath/demo1.png";
+  static const String menuSvg = "$_iconPath/menu.svg";
+  static const String location = "$_iconPath/location.png";
+
+  //images
+  static const String _imagePath = "assets/images";
+  static const String person = "$_imagePath/person.png";
 }
