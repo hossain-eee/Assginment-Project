@@ -18,8 +18,6 @@ class SoftBd extends StatelessWidget {
           title: 'Flutter Demo',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
-            textTheme:
-                GoogleFonts.notoSerifTextTheme(), // Use Noto Serif Bengali
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
             useMaterial3: true,
           ),
