@@ -188,7 +188,7 @@ class UserInfo extends StatelessWidget {
                   children: [
                     Text(
                       'মোঃ মোহাইমেনুল রেজা',
-                      style: GoogleFonts.notoSerif(
+                      style: GoogleFonts.notoSerifBengali(
                         fontWeight: FontWeight.w700,
                         fontSize: 19.sp,
                         color: AppColor.boldFont,
@@ -197,7 +197,7 @@ class UserInfo extends StatelessWidget {
                     ),
                     Text(
                       'সফটবিডি লিমিটেড',
-                      style: GoogleFonts.notoSerif(
+                      style: GoogleFonts.notoSerifBengali(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
                         color: AppColor.normalFont,
@@ -221,7 +221,7 @@ class UserInfo extends StatelessWidget {
                         ),
                         Text(
                           'ঢাকা',
-                          style: GoogleFonts.notoSerif(
+                          style: GoogleFonts.notoSerifBengali(
                             fontWeight: FontWeight.w400,
                             fontSize: 14.sp,
                             color: AppColor.normalFont,
