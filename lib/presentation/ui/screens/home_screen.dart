@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
+import 'package:soft_bd/presentation/ui/widgets/home/date_range_picker.dart';
+import 'package:soft_bd/presentation/ui/widgets/home/custom_timer.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/home_appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/user_info.dart';
@@ -17,18 +19,24 @@ class HomeScreen extends StatelessWidget {
         height: 812.h,
         child: Column(
           children: [
-           const HomeAppbar(),
+            const HomeAppbar(),
             // HomeAppbar2(),
             // content
-           const UserInfo(),
-             SizedBox(
-            height: 16.h,
-          ),
-          
+            const UserInfo(),
+            SizedBox(
+              height: 16.h,
+            ),
+            //timer
+            // CircularProgressBar(),
+            DateRangePicker(),
+            Container(),
+            //bottomNavAppbar
+            SizedBox(
+              height: 20.h,
+            ),
           ],
         ),
       ),
     );
   }
 }
-
