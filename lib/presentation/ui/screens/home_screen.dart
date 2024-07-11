@@ -22,13 +22,44 @@ class HomeScreen extends StatelessWidget {
             const HomeAppbar(),
             // HomeAppbar2(),
             // content
-            const UserInfo(),
+            Padding(
+              padding: EdgeInsets.only(
+                left: 24.w,
+                right: 24.w,
+                top: 22.h,
+              ),
+              child: Container(
+                width: 327.w,
+                height: 552.h,
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.red)),
+                child: Column(
+                  children: [
+                    UserInfo(),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    //timer section 
+                    Row(
+                      children: [
+                        //ProgressBar
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        DateRangePicker(),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+
             SizedBox(
               height: 16.h,
             ),
             //timer
             // CircularProgressBar(),
-            DateRangePicker(),
+
             Container(),
             //bottomNavAppbar
             SizedBox(
