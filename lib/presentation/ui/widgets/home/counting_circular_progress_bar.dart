@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/date_controller.dart';
+import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CountingCircularProgressBar extends StatefulWidget {
   const CountingCircularProgressBar({
@@ -35,8 +38,8 @@ class _CountingCircularProgressBarState
 
     return Center(
       child: SizedBox(
-        width: 145,
-        height: 132,
+        width: 120.w,
+        height: 132.h,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -44,7 +47,7 @@ class _CountingCircularProgressBarState
               List<String> dateData =
                   dateController.calculateStartDateAndToaDay();
               return CustomPaint(
-                size: const Size(200, 200), // You can change the size as needed
+                size: Size(200.w, 200.h), // You can change the size as needed
                 painter:
                     SolidCircularProgressPainter(dateController.progress.value),
                 child: Center(
@@ -56,36 +59,47 @@ class _CountingCircularProgressBarState
                           dateData[0].contains('০')
                               ? '${dateData[1]} বছর'
                               : '${dateData[0]}${dateData[1]} বছর',
-                          style: const TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.notoSerifBengali(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColor.boldFont,
+                          ),
                           textAlign: TextAlign.center,
                         ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          if (dateData[2] != '০' || dateData[3] != '০')
-                            Text(
-                              dateData[2].contains('০')
-                                  ? "${dateData[3]} মাস"
-                                  : '${dateData[2]}${dateData[3]} মাস',
-                              style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
+                      FittedBox(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            if (dateData[2] != '০' || dateData[3] != '০')
+                              Text(
+                                dateData[2].contains('০')
+                                    ? "${dateData[3]} মাস"
+                                    : '${dateData[2]}${dateData[3]} মাস',
+                                style: GoogleFonts.notoSerifBengali(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColor.boldFont,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            SizedBox(
+                              width: 4.w,
                             ),
-                          SizedBox(
-                            width: 2,
-                          ),
-                          if (dateData[4] != '০' || dateData[5] != '০')
-                            Text(
-                              dateData[4].contains('০')
-                                  ? "${dateData[5]} দিন"
-                                  : '${dateData[4]}${dateData[5]} দিন',
-                              style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.center,
-                            ),
-                        ],
+                            if (dateData[4] != '০' || dateData[5] != '০')
+                              Text(
+                                dateData[4].contains('০')
+                                    ? "${dateData[5]} দিন"
+                                    : '${dateData[4]}${dateData[5]} দিন',
+                                style: GoogleFonts.notoSerifBengali(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColor.boldFont,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -106,8 +120,9 @@ class SolidCircularProgressPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    double strokeWidth = 14;
-    double radius = (size.width / 2) - strokeWidth;
+    double strokeWidth = 12.w;
+    double radius =
+        (size.width / 2).r - strokeWidth; // .r comes from responsive package
 
     final Paint backgroundPaint = Paint()
       ..color = Colors.grey[300]!
@@ -124,7 +139,8 @@ class SolidCircularProgressPainter extends CustomPainter {
     canvas.drawCircle(size.center(Offset.zero), radius, backgroundPaint);
 
     // Draw the progress arc
-    double startAngle = 3.141592653589793 / 2; // Start from the bottom center
+    double startAngle =
+        (3.141592653589793 / 2).r; // Start from the bottom center
     double sweepAngle =
         2 * 3.141592653589793 * progress; // Sweep angle based on progress
 
