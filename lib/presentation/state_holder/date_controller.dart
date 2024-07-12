@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 import 'package:intl/intl.dart';
 
 class DateController extends GetxController {
+  //date range picker
   var startDate = Rxn<DateTime>();
   var endDate = Rxn<DateTime>();
+//circular progress variable
+  RxInt totalDays = 0.obs;
+  RxInt elapsedDays = 0.obs;
+  RxDouble progress = 0.0.obs;
 
   Future<void> selectStartDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -93,6 +99,13 @@ class DateController extends GetxController {
 
   //circular progressbar
   List<String> calculateStartDateAndToaDay() {
+    //calculate progress to fill the circle with color, conditon apply that start and end time should be present
+    if (endDate.value != null && startDate.value != null) {
+      totalDays.value = endDate.value!.difference(startDate.value!).inDays;
+      elapsedDays.value = DateTime.now().difference(startDate.value!).inDays;
+      progress.value = elapsedDays.value / totalDays.value;
+    }
+
     if (startDate.value == null || endDate.value == null) {
       return ['', '', '', '', '', ''];
     }
@@ -125,7 +138,7 @@ class DateController extends GetxController {
     String m2 = convertToBengaliDigits(months % 10);
     String d1 = days ~/ 10 == 0 ? '০' : convertToBengaliDigits(days ~/ 10);
     String d2 = convertToBengaliDigits(days % 10);
-    print('day-$d1$d2, month-$m1,$m2, year-$y1,$y2');
+
     return [y1, y2, m1, m2, d1, d2];
   }
 }
