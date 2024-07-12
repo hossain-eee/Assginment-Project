@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soft_bd/presentation/state_holder/date_controller.dart';
+import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/counting_circular_progress_bar.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/date_range_picker.dart';
@@ -75,10 +76,16 @@ class HomeScreen extends StatelessWidget {
                           ),
                           itemCount: contentIcon.length,
                           itemBuilder: (context, index) {
-                            return HomeCategory(
-                              index: dateController
-                                  .convertToBengaliDigits(index + 1),
-                              imagePath: contentIcon[index],
+                            return InkWell(
+                              splashColor: AppColor.contentBackground,
+                              onTap: () {
+                                print('Clicked on Menu No :${index+1}');
+                              },
+                              child: HomeCategory(
+                                index: dateController
+                                    .convertToBengaliDigits(index + 1),
+                                imagePath: contentIcon[index],
+                              ),
                             );
                           }),
                     ),
