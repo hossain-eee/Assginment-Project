@@ -18,7 +18,7 @@ class HomeCategory extends StatelessWidget {
             children: [
               Container(
                 width: 65.w,
-                height: 74.h,
+                height: 70.h,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColor.contentBackground,
@@ -27,11 +27,11 @@ class HomeCategory extends StatelessWidget {
                 child: Image.asset(
                   imagePath,
                   width: 32.w,
-                  height: 33.h,
+                  height: 35.h,
                 ),
               ),
               SizedBox(
-                height: 7.h,
+                height: 5.h,
               ),
               Flexible(
                 child: Text(
