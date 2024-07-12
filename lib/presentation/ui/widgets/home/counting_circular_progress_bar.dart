@@ -41,7 +41,7 @@ class _CountingCircularProgressBarState
         children: [
           SizedBox(
             width: 120.w,
-            height: 132.h,
+            height: 120.h,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

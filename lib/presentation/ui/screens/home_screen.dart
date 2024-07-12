@@ -6,7 +6,6 @@ import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/counting_circular_progress_bar.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/date_range_picker.dart';
-import 'package:soft_bd/presentation/ui/widgets/home/custom_timer.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/home_appbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/user_info.dart';
@@ -34,8 +33,8 @@ class HomeScreen extends StatelessWidget {
               child: Container(
                 width: 327.w,
                 height: 552.h,
-                decoration:
-                    BoxDecoration(border: Border.all(color: Colors.red)),
+                // decoration:
+                //     BoxDecoration(border: Border.all(color: Colors.red)),
                 child: Column(
                   children: [
                     UserInfo(),
@@ -43,22 +42,17 @@ class HomeScreen extends StatelessWidget {
                       height: 20.h,
                     ),
                     //timer section
-                    Row(
-                      children: [
-                        //ProgressBar, take date input from date conter controller 
-                        Obx(
-                          () => CountingCircularProgressBar(
-                            startDate: dateController.startDate.value ??
-                                DateTime.now(),
-                            endDate:
-                                dateController.endDate.value ?? DateTime.now(),
+                    Padding(
+                      padding: EdgeInsets.only(top: 2.h),
+                      child: Row(
+                        children: [
+                          const CountingCircularProgressBar(),
+                          SizedBox(
+                            width: 5.w,
                           ),
-                        ),
-                        SizedBox(
-                          width: 5.w,
-                        ),
-                        DateRangePicker(),
-                      ],
+                          DateRangePicker(),
+                        ],
+                      ),
                     )
                   ],
                 ),
