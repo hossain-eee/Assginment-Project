@@ -37,77 +37,93 @@ class _CountingCircularProgressBarState
     // // final int elapsedRemainingDays = remainingDaysAfterYears % 30;
 
     return Center(
-      child: SizedBox(
-        width: 120.w,
-        height: 132.h,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(() {
-              List<String> dateData =
-                  dateController.calculateStartDateAndToaDay();
-              return CustomPaint(
-                size: Size(200.w, 200.h), // You can change the size as needed
-                painter:
-                    SolidCircularProgressPainter(dateController.progress.value),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (dateData[0] != '০' || dateData[1] != '০')
-                        Text(
-                          dateData[0].contains('০')
-                              ? '${dateData[1]} বছর'
-                              : '${dateData[0]}${dateData[1]} বছর',
-                          style: GoogleFonts.notoSerifBengali(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppColor.boldFont,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      FittedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            if (dateData[2] != '০' || dateData[3] != '০')
-                              Text(
-                                dateData[2].contains('০')
-                                    ? "${dateData[3]} মাস"
-                                    : '${dateData[2]}${dateData[3]} মাস',
-                                style: GoogleFonts.notoSerifBengali(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.boldFont,
-                                ),
-                                textAlign: TextAlign.center,
+      child: Column(
+        children: [
+          SizedBox(
+            width: 120.w,
+            height: 132.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Obx(() {
+                  List<String> dateData =
+                      dateController.calculateStartDateAndToaDay();
+                  return CustomPaint(
+                    size:
+                        Size(200.w, 200.h), // You can change the size as needed
+                    painter: SolidCircularProgressPainter(
+                        dateController.progress.value),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (dateData[0] != '০' || dateData[1] != '০')
+                            Text(
+                              dateData[0].contains('০')
+                                  ? '${dateData[1]} বছর'
+                                  : '${dateData[0]}${dateData[1]} বছর',
+                              style: GoogleFonts.notoSerifBengali(
+                                fontSize: 13.sp,
+                                fontWeight: FontWeight.w600,
+                                color: AppColor.boldFont,
                               ),
-                            SizedBox(
-                              width: 4.w,
+                              textAlign: TextAlign.center,
                             ),
-                            if (dateData[4] != '০' || dateData[5] != '০')
-                              Text(
-                                dateData[4].contains('০')
-                                    ? "${dateData[5]} দিন"
-                                    : '${dateData[4]}${dateData[5]} দিন',
-                                style: GoogleFonts.notoSerifBengali(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.boldFont,
+                          FittedBox(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                if (dateData[2] != '০' || dateData[3] != '০')
+                                  Text(
+                                    dateData[2].contains('০')
+                                        ? "${dateData[3]} মাস"
+                                        : '${dateData[2]}${dateData[3]} মাস',
+                                    style: GoogleFonts.notoSerifBengali(
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.boldFont,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                SizedBox(
+                                  width: 4.w,
                                 ),
-                                textAlign: TextAlign.center,
-                              ),
-                          ],
-                        ),
+                                if (dateData[4] != '০' || dateData[5] != '০')
+                                  Text(
+                                    dateData[4].contains('০')
+                                        ? "${dateData[5]} দিন"
+                                        : '${dateData[4]}${dateData[5]} দিন',
+                                    style: GoogleFonts.notoSerifBengali(
+                                      fontSize: 13.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.boldFont,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              );
-            }),
-          ],
-        ),
+                    ),
+                  );
+                }),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          Text(
+            'সময় অতিবাহিত',
+            style: GoogleFonts.notoSerifBengali(
+              fontSize: 14.sp,
+              fontWeight: FontWeight.w700,
+              color: AppColor.boldFont,
+            ),
+          ),
+        ],
       ),
     );
   }
