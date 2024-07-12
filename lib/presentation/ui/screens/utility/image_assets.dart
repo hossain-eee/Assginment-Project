@@ -11,4 +11,12 @@ class ImageAssets {
   //images
   static const String _imagePath = "assets/images";
   static const String person = "$_imagePath/person.png";
+  //menu icon
+  static const String personIconPng = "$_iconPath/person_icon.png";
+  static const String homeIcon = "$_iconPath/home.png";
+  static const String wheelChairPng = "$_iconPath/wheelChair.png";
+   static const String gamesPng = "$_iconPath/games.png";
+    static const String folderPng = "$_iconPath/folder.png";
+    static const String folder2Png = "$_iconPath/folder2.PNG";
+     static const String notePng = "$_iconPath/note.png";
 }
