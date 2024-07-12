@@ -3,6 +3,7 @@ import 'package:soft_bd/presentation/ui/screens/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:soft_bd/presentation/ui/widgets/home/bottom_nav_bar.dart';
 
 class SoftBd extends StatelessWidget {
   const SoftBd({super.key});
@@ -24,7 +25,8 @@ class SoftBd extends StatelessWidget {
           home: child,
         );
       },
-      child:  HomeScreen(),
+      // child:  HomeScreen(),
+      child:  BottomNavBar(),
     );
   }
 }
