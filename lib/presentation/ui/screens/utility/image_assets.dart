@@ -19,4 +19,12 @@ class ImageAssets {
     static const String folderPng = "$_iconPath/folder.png";
     static const String folder2Png = "$_iconPath/folder2.PNG";
      static const String notePng = "$_iconPath/note.png";
+
+     //nav icon
+      static const String _navIconPath = "assets/nav";
+      static const String homePngNav = "$_navIconPath/Home3.png";
+      static const String calPngNav = "$_navIconPath/calendar_nav.png";
+      static const String cameraPngNav = "$_navIconPath/camera_nav.png";
+      static const String menPngNav = "$_navIconPath/men_nav.png";
+      static const String personPngNav = "$_navIconPath/person_nav.png";
 }
