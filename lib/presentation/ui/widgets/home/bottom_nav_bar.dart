@@ -35,20 +35,24 @@ class _BottomNavBarState extends State<BottomNavBar> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         elevation: 1,
-        height: 60,
+        height: 64.h,
         color: AppColor.navColor,
         shape: const CircularNotchedRectangle(),
-        notchMargin: 10,
+        notchMargin: 10.sp,
         clipBehavior: Clip.antiAliasWithSaveLayer,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: EdgeInsets.only(
+            bottom: 5.h,
+            left: 24.w,
+            right: 24.w,
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                width: 30,
-                height: 30,
+                width: 25.w,
+                height: 30.h,
                 child: InkWell(
                   splashColor: AppColor.contentBackground,
                   onTap: () {
@@ -61,16 +65,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     color: currentIndex == 0
                         ? AppColor.boldFont
                         : Colors.grey.shade400,
-                    width: 30,
-                    height: 30,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
 
               SizedBox(
-                width: 30,
-                height: 30,
+                width: 25.w,
+                height: 30.h,
                 child: InkWell(
                   splashColor: AppColor.contentBackground,
                   onTap: () {
@@ -83,20 +85,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     color: currentIndex == 1
                         ? AppColor.boldFont
                         : Colors.grey.shade400,
-                    width: 30,
-                    height: 30,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               //space for place FAB at middle
-              const SizedBox(
-                width: 15,
+              SizedBox(
+                width: 15.w,
               ),
 
               SizedBox(
-                width: 30,
-                height: 30,
+                width: 30.w,
+                height: 30.h,
                 child: InkWell(
                   splashColor: AppColor.contentBackground,
                   onTap: () {
@@ -109,16 +109,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     color: currentIndex == 3
                         ? AppColor.boldFont
                         : Colors.grey.shade400,
-                    width: 30,
-                    height: 30,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
 
               SizedBox(
-                width: 30,
-                height: 30,
+                width: 30.w,
+                height: 30.h,
                 child: InkWell(
                   splashColor: AppColor.contentBackground,
                   onTap: () {
@@ -131,8 +129,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
                     color: currentIndex == 4
                         ? AppColor.boldFont
                         : Colors.grey.shade400,
-                    width: 30,
-                    height: 30,
                     fit: BoxFit.cover,
                   ),
                 ),
