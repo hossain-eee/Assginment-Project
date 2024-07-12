@@ -24,7 +24,7 @@ class SoftBd extends StatelessWidget {
           home: child,
         );
       },
-      child: const HomeScreen(),
+      child:  HomeScreen(),
     );
   }
 }

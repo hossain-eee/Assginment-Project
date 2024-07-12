@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:soft_bd/presentation/state_holder/date_controller.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
+import 'package:soft_bd/presentation/ui/widgets/home/counting_circular_progress_bar.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/date_range_picker.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/custom_timer.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/home_appbar.dart';
@@ -9,8 +12,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/user_info.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
+  HomeScreen({super.key});
+  final DateController dateController = Get.put(DateController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +42,18 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    //timer section 
+                    //timer section
                     Row(
                       children: [
                         //ProgressBar
+                        Obx(
+                          () => CountingCircularProgressBar(
+                            startDate: dateController.startDate.value ??
+                                DateTime.now(),
+                            endDate:
+                                dateController.endDate.value ?? DateTime.now(),
+                          ),
+                        ),
                         SizedBox(
                           width: 5.w,
                         ),
