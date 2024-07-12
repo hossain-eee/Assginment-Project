@@ -37,7 +37,7 @@ class HomeCategory extends StatelessWidget {
                 child: Text(
                   'মেনু নং',
                   style: GoogleFonts.notoSerifBengali(
-                    fontSize: 14.sp,
+                    fontSize: 13.5.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColor.boldFont,
                   ),
@@ -50,16 +50,14 @@ class HomeCategory extends StatelessWidget {
                 child: Text(
                   '০০০০$index',
                   style: GoogleFonts.notoSerifBengali(
-                    fontSize: 14.sp,
+                    fontSize: 13.5.sp,
                     fontWeight: FontWeight.w600,
                     color: AppColor.boldFont,
                   ),
                 ),
               ),
-              
             ],
           )),
     );
   }
 }
- 

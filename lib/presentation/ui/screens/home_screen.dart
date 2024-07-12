@@ -36,13 +36,13 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                 left: 24.w,
                 right: 24.w,
-                top: 22.h,
+                top: 5.h,
               ),
               child: Container(
                 width: 327.w,
-                height: 552.h,
-                // decoration:
-                //     BoxDecoration(border: Border.all(color: Colors.red)),
+                height: 580.h,
+                /*   decoration:
+                    BoxDecoration(border: Border.all(color: Colors.red)), */
                 child: Column(
                   children: [
                     UserInfo(),
@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 25.h,
+                      height: 15.h,
                     ),
                     Expanded(
                       child: GridView.builder(
@@ -79,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                             return InkWell(
                               splashColor: AppColor.contentBackground,
                               onTap: () {
-                                print('Clicked on Menu No :${index+1}');
+                                print('Clicked on Menu No :${index + 1}');
                               },
                               child: HomeCategory(
                                 index: dateController
