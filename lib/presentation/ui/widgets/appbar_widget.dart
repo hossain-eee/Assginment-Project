@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 
-class HomeAppbar extends StatelessWidget {
-  const HomeAppbar({super.key, this.image, required this.text});
+class AppBarWidget extends StatelessWidget {
+  const AppBarWidget({super.key, this.image, required this.text});
   final String? image;
   final String text;
   @override
