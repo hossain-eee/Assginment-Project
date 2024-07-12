@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:soft_bd/presentation/ui/screens/home_screen.dart';
+import 'package:soft_bd/presentation/ui/screens/time_line_screen.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   int currentIndex = 1;
   List screen = [
     HomeScreen(),
-    Scaffold(),
+    TimeLineScreen(),
     Scaffold(),
     Scaffold(),
     Scaffold(),

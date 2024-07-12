@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:soft_bd/presentation/ui/widgets/home/bottom_nav_bar.dart';
+import 'package:soft_bd/presentation/ui/widgets/bottom_nav_bar.dart';
 
 class SoftBd extends StatelessWidget {
   const SoftBd({super.key});
