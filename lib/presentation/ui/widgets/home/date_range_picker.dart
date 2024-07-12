@@ -97,9 +97,10 @@ class _DateRangePickerState extends State<DateRangePicker> {
     return DateFormat("d'ই' MMMM yyyy", 'bn_BD').format(date);
   }
 
+//create Box for insert digit
   Widget buildDigitBox(String digit) {
     return Container(
-      width: 26.w,
+      width: 24.w,
       height: 27.h,
       alignment: Alignment.center,
       padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 1.h),
@@ -125,7 +126,7 @@ class _DateRangePickerState extends State<DateRangePicker> {
     return Align(
       alignment: Alignment.topLeft,
       child: SizedBox(
-        width: 205.w,
+        width: 197.w,
         height: 160.h,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
