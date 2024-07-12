@@ -31,8 +31,9 @@ class DateController extends GetxController {
   }
 
   List<String> calculateDifference() {
-    if (startDate.value == null || endDate.value == null) return ['', '', '', '', '', ''];
- // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
+    if (startDate.value == null || endDate.value == null)
+      return ['', '', '', '', '', ''];
+    // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
     DateTime toDay =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     int years = endDate.value!.year - toDay.year;
@@ -52,7 +53,6 @@ class DateController extends GetxController {
       months += 12;
     }
 
-
     // Decrement one day to exclude the end date(ommit last day)
     if (days > 0) {
       days--;
@@ -64,7 +64,7 @@ class DateController extends GetxController {
       months = 11;
       days = DateTime(toDay.year, toDay.month + 1, 0).day - 1;
     }
-        // Convert to string and ensure two-digit format
+    // Convert to string and ensure two-digit format
 /*   String y1 = years ~/ 10 == 0 ? '0' : (years ~/ 10).toString();
   String y2 = (years % 10).toString();
   String m1 = months ~/ 10 == 0 ? '0' : (months ~/ 10).toString();
@@ -88,5 +88,42 @@ class DateController extends GetxController {
 
   String formatDate(DateTime date) {
     return DateFormat("d'ই' MMMM yyyy", 'bn_BD').format(date);
+  }
+
+  //circular progressbar
+  List<String> calculateStartDateAndToaDay() {
+    if (startDate.value == null || endDate.value == null)
+      return ['', '', '', '', '', ''];
+    // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
+    DateTime toDay =
+        DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+
+    int years = toDay.year - startDate.value!.year;
+    int months = toDay.month - startDate.value!.month;
+    int days = toDay.day - startDate.value!.day;
+
+    // Adjust if days is negative
+    if (days < 0) {
+      months--;
+      // days += DateTime(start.year, start.month + 1, 0).day;
+      days += DateTime(toDay.year, toDay.month + 1, 0).day;
+    }
+
+    // Adjust if months is negative
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    // Convert to string and ensure two-digit format
+
+    String y1 = years ~/ 10 == 0 ? '০' : convertToBengaliDigits(years ~/ 10);
+    String y2 = convertToBengaliDigits(years % 10);
+    String m1 = months ~/ 10 == 0 ? '০' : convertToBengaliDigits(months ~/ 10);
+    String m2 = convertToBengaliDigits(months % 10);
+    String d1 = days ~/ 10 == 0 ? '০' : convertToBengaliDigits(days ~/ 10);
+    String d2 = convertToBengaliDigits(days % 10);
+    print('day-$d1$d2, month-$m1,$m2, year-$y1,$y2');
+    return [y1, y2, m1, m2, d1, d2];
   }
 }
