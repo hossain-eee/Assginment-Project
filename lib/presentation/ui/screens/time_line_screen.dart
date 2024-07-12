@@ -23,10 +23,28 @@ class TimeLineScreen extends StatelessWidget {
             const AppBarWidget(text: 'সময়রেখা'),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
-              child: Column(
-                children: [
-                  HeadContentTimeLine(timeLineController: timeLineController),
-                ],
+              child: Container(
+                width: 323.w,
+                height: 552.h,
+                decoration:
+                    BoxDecoration(border: Border.all(color: Colors.orange)),
+                child: Column(
+                  children: [
+                    HeadContentTimeLine(timeLineController: timeLineController),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Container(
+                      height: 86.39.h,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.blue.shade400),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text('Bengali Canlender'),
+                    ),
+                  ],
+                ),
               ),
             )
           ],
@@ -35,4 +53,3 @@ class TimeLineScreen extends StatelessWidget {
     );
   }
 }
-
