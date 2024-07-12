@@ -125,12 +125,21 @@ class SolidCircularProgressPainter extends CustomPainter {
         (size.width / 2).r - strokeWidth; // .r comes from responsive package
 
     final Paint backgroundPaint = Paint()
-      ..color = Colors.grey[300]!
+      // ..color = Colors.grey[300]!
+      ..color = AppColor.circularBarGrey
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
 
     final Paint progressPaint = Paint()
-      ..color = Colors.blue
+      // ..color = Colors.blue
+      ..shader = const LinearGradient(
+        colors: [
+          AppColor.linearColor1,
+          AppColor.linearColor2,
+        ],
+        begin: Alignment(-1.0, -1.0),
+        end: Alignment(1.0, 1.0),
+      ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth
       ..strokeCap = StrokeCap.round;
