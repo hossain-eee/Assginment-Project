@@ -5,7 +5,7 @@ import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/counting_circular_progress_bar.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/date_range_picker.dart';
-import 'package:soft_bd/presentation/ui/widgets/home/home_appbar.dart';
+import 'package:soft_bd/presentation/ui/widgets/appbar_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/home_category.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/user_info.dart';
@@ -29,7 +29,10 @@ class HomeScreen extends StatelessWidget {
         height: 812.h,
         child: Column(
           children: [
-            const HomeAppbar(),
+            const AppBarWidget(
+              image: ImageAssets.demo1Svg,
+              text: 'Flutter Task',
+            ),
             // HomeAppbar2(),
             // content
             Padding(
