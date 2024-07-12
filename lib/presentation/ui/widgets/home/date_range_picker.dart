@@ -33,7 +33,7 @@ class DateRangePicker extends StatelessWidget {
               height: 4.h,
             ),
             //two input start day and end day
-            calendarInput(context),
+            FittedBox(child: calendarInput(context)),
             SizedBox(height: 26.h),
             Text(
               'আরও বাকি',
