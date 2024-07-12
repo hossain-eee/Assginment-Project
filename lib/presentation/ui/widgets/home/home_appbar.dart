@@ -5,8 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 
 class HomeAppbar extends StatelessWidget {
-  const HomeAppbar({super.key});
-
+  const HomeAppbar({super.key, this.image, required this.text});
+  final String? image;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -21,41 +22,32 @@ class HomeAppbar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              width: 185.w,
-              height: 37.h,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SvgPicture.asset(
-                    ImageAssets.menuSvg,
-                    width: 24.w,
-                    height: 24.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(
-                    width: 16.w,
-                  ),
-                  Image.asset(
-                    ImageAssets.demo1Svg,
-                    width: 36.w,
-                    height: 36.h,
-                    fit: BoxFit.cover,
-                  ),
-                  SizedBox(
-                    width: 8.w,
-                  ),
-                  Text(
-                    'Flutter Task',
-                    style: GoogleFonts.notoSerifBengali(
-                      fontSize: 16.sp, // Responsive font size
-                      fontWeight: FontWeight.w700,
-                      height: 22.4 / 16,
-                    ),
-                  ),
-                ],
+            //when image is not null then Row(menuImg+laptopImg+text), this is for home screen
+            if (image != null)
+              SizedBox(
+                width: 185.w,
+                height: 37.h,
+                child: imageWithTitle(image!),
               ),
-            ),
+            //this image will execute/render only when image==null, this is for timeLline screen
+            if (image == null)
+              SvgPicture.asset(
+                ImageAssets.menuSvg,
+                width: 24.w,
+                height: 24.h,
+                fit: BoxFit.cover,
+              ),
+            //this text will execute/render only when image==null, this is for timeLline screen
+            if (image == null)
+              Text(
+                text,
+                style: GoogleFonts.notoSerifBengali(
+                  fontSize: 16.sp, // Responsive font size
+                  fontWeight: FontWeight.w700,
+                  height: 22.4 / 16,
+                ),
+              ),
+            //it will always execute weather image is null or not null
             SvgPicture.asset(
               ImageAssets.bellSvg,
               width: 35.w,
@@ -65,6 +57,41 @@ class HomeAppbar extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Row imageWithTitle(String image) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        SvgPicture.asset(
+          ImageAssets.menuSvg,
+          width: 24.w,
+          height: 24.h,
+          fit: BoxFit.cover,
+        ),
+        SizedBox(
+          width: 16.w,
+        ),
+        Image.asset(
+          // ImageAssets.demo1Svg,
+          image,
+          width: 36.w,
+          height: 36.h,
+          fit: BoxFit.cover,
+        ),
+        SizedBox(
+          width: 8.w,
+        ),
+        Text(
+          text,
+          style: GoogleFonts.notoSerifBengali(
+            fontSize: 16.sp, // Responsive font size
+            fontWeight: FontWeight.w700,
+            height: 22.4 / 16,
+          ),
+        ),
+      ],
     );
   }
 }
