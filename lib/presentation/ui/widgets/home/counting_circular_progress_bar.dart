@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:soft_bd/presentation/state_holder/date_controller.dart';
@@ -20,7 +19,7 @@ class _CountingCircularProgressBarState
   @override
   Widget build(BuildContext context) {
     //get date from dateController of getx
- /*    DateTime startDate = dateController.startDate.value ?? DateTime.now();
+    /*    DateTime startDate = dateController.startDate.value ?? DateTime.now();
     DateTime endDate = dateController.endDate.value ?? DateTime.now();
     final DateTime currentDate = DateTime.now(); */
     //calculation
@@ -46,33 +45,48 @@ class _CountingCircularProgressBarState
                   dateController.calculateStartDateAndToaDay();
               return CustomPaint(
                 size: const Size(200, 200), // You can change the size as needed
-                painter: SolidCircularProgressPainter(
-                    dateController.progress.value),
+                painter:
+                    SolidCircularProgressPainter(dateController.progress.value),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (dateData[0] != '০' || dateData[1] != '০')
                         Text(
-                          '${dateData[0]}${dateData[1]} বছর',
+                          dateData[0].contains('০')
+                              ? '${dateData[1]} বছর'
+                              : '${dateData[0]}${dateData[1]} বছর',
                           style: const TextStyle(
                               fontSize: 12, fontWeight: FontWeight.bold),
                           textAlign: TextAlign.center,
                         ),
-                      if (dateData[2] != '০' || dateData[3] != '০')
-                        Text(
-                          '${dateData[2]}${dateData[3]}  মাস',
-                          style: const TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
-                      if (dateData[4] != '০' || dateData[5] != '০')
-                        Text(
-                          '${dateData[4]}${dateData[5]} দিন',
-                          style: const TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                          textAlign: TextAlign.center,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (dateData[2] != '০' || dateData[3] != '০')
+                            Text(
+                              dateData[2].contains('০')
+                                  ? "${dateData[3]} মাস"
+                                  : '${dateData[2]}${dateData[3]} মাস',
+                              style: const TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          SizedBox(
+                            width: 2,
+                          ),
+                          if (dateData[4] != '০' || dateData[5] != '০')
+                            Text(
+                              dateData[4].contains('০')
+                                  ? "${dateData[5]} দিন"
+                                  : '${dateData[4]}${dateData[5]} দিন',
+                              style: const TextStyle(
+                                  fontSize: 12, fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
