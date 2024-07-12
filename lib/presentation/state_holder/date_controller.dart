@@ -32,7 +32,7 @@ class DateController extends GetxController {
 
   List<String> calculateDifference() {
     if (startDate.value == null || endDate.value == null) return ['', '', '', '', '', ''];
-
+ // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
     DateTime toDay =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
     int years = endDate.value!.year - toDay.year;
@@ -42,6 +42,7 @@ class DateController extends GetxController {
     // Adjust if days is negative
     if (days < 0) {
       months--;
+      // days += DateTime(start.year, start.month + 1, 0).day;
       days += DateTime(toDay.year, toDay.month + 1, 0).day;
     }
 
@@ -51,6 +52,25 @@ class DateController extends GetxController {
       months += 12;
     }
 
+
+    // Decrement one day to exclude the end date(ommit last day)
+    if (days > 0) {
+      days--;
+    } else if (months > 0) {
+      months--;
+      days = DateTime(toDay.year, toDay.month + 1, 0).day - 1;
+    } else if (years > 0) {
+      years--;
+      months = 11;
+      days = DateTime(toDay.year, toDay.month + 1, 0).day - 1;
+    }
+        // Convert to string and ensure two-digit format
+/*   String y1 = years ~/ 10 == 0 ? '0' : (years ~/ 10).toString();
+  String y2 = (years % 10).toString();
+  String m1 = months ~/ 10 == 0 ? '0' : (months ~/ 10).toString();
+  String m2 = (months % 10).toString();
+  String d1 = days ~/ 10 == 0 ? '0' : (days ~/ 10).toString();
+  String d2 = (days % 10).toString(); */
     String y1 = years ~/ 10 == 0 ? '০' : convertToBengaliDigits(years ~/ 10);
     String y2 = convertToBengaliDigits(years % 10);
     String m1 = months ~/ 10 == 0 ? '০' : convertToBengaliDigits(months ~/ 10);
