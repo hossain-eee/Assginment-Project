@@ -31,8 +31,9 @@ class DateController extends GetxController {
   }
 
   List<String> calculateDifference() {
-    if (startDate.value == null || endDate.value == null)
+    if (startDate.value == null || endDate.value == null) {
       return ['', '', '', '', '', ''];
+    }
     // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
     DateTime toDay =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
@@ -92,8 +93,9 @@ class DateController extends GetxController {
 
   //circular progressbar
   List<String> calculateStartDateAndToaDay() {
-    if (startDate.value == null || endDate.value == null)
+    if (startDate.value == null || endDate.value == null) {
       return ['', '', '', '', '', ''];
+    }
     // DateTime start = DateTime(startDate!.year, startDate!.month, startDate!.day);
     DateTime toDay =
         DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
