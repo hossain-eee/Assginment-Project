@@ -198,8 +198,9 @@ class _CountingCircularProgressBarState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomPaint(
-              size: Size(200, 200), // You can change the size as needed
-              painter: SolidCircularProgressPainter(progress),
+              size: const Size(200, 200), // You can change the size as needed
+              painter:
+                  SolidCircularProgressPainter(totalDays != 0 ? progress : 0.0),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -207,21 +208,21 @@ class _CountingCircularProgressBarState
                     if (elapsedYears != 0)
                       Text(
                         '$elapsedYears years',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     if (elapsedMonths != 0)
                       Text(
                         '$elapsedMonths months',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                     if (elapsedRemainingDays != 0)
                       Text(
                         '$elapsedRemainingDays days',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),

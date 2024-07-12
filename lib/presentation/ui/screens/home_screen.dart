@@ -45,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                     //timer section
                     Row(
                       children: [
-                        //ProgressBar
+                        //ProgressBar, take date input from date conter controller 
                         Obx(
                           () => CountingCircularProgressBar(
                             startDate: dateController.startDate.value ??
