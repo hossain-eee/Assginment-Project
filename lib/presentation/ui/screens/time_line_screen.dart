@@ -34,14 +34,60 @@ class TimeLineScreen extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    Container(
-                      height: 86.39.h,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.blue.shade400),
+                    Card(
+                      elevation: 1,
+                      child: Container(
+                        height: 86.39.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.blue.shade400),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text('Bengali Canlender'),
                       ),
-                      alignment: Alignment.center,
-                      child: Text('Bengali Canlender'),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Card(
+                      elevation: 1,
+                      child: Container(
+                          height: 350.h,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              // border: Border.all(color: Colors.red),
+                              color: AppColor.navColor,
+                              borderRadius: BorderRadius.circular(15.r),
+                              boxShadow: const [
+                                BoxShadow(
+                                  color: Color(
+                                      0x26000000), // This is the equivalent of #00000026
+                                  blurRadius: 5,
+                                  spreadRadius: 0,
+                                  offset: Offset(0, 0),
+                                ),
+                              ]),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 10.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'আজকের কার্যক্রম',
+                                  style: GoogleFonts.notoSerifBengali(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.boldFont,
+                                  ),
+                                ),
+                                
+                              ],
+                            ),
+                          )),
                     ),
                   ],
                 ),
