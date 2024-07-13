@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/network_controller.dart';
 import 'package:soft_bd/presentation/state_holder/previ_upcom_7_day_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
-import 'package:soft_bd/presentation/ui/screens/prevvious_upcoming_7_days.dart';
+import 'package:soft_bd/presentation/ui/widgets/time_line/prevvious_upcoming_7_days.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/widgets/appbar_widget.dart';
 import 'package:soft_bd/presentation/ui/widgets/time_line/head_content.dart';
