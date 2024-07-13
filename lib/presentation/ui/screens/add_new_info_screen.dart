@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
@@ -8,6 +8,94 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddNewInfoScreen extends StatelessWidget {
   const AddNewInfoScreen({super.key});
+//alert dialog
+  void alertDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.white,
+            title: Image.asset(
+              ImageAssets.checkPng,
+              width: 96.w,
+              height: 96.h,
+            ),
+            titlePadding: EdgeInsets.only(
+              top: 50.h,
+              left: 16.w,
+              right: 16.w,
+            ), // Adjust padding as needed
+            contentPadding: EdgeInsets.symmetric(
+              horizontal: 30.w,
+              vertical: 20.h,
+            ),
+
+            content: SizedBox(
+              height: 170.h,
+              width: 250.w,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'নতুন অনুচ্ছেদ সংরক্ষণ',
+                    style: GoogleFonts.notoSerifBengali(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                      color: AppColor.boldFont,
+                    ),
+                  ),
+                  Text(
+                    'আপনার সময়রেখাতে নতুন অনুচ্ছেদ সংরক্ষণ সম্পুর্ন হয়েছে',
+                    style: GoogleFonts.notoSerifBengali(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w400,
+                      color: AppColor.hintTextColor,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Get.back();
+                    },
+                    splashColor: AppColor.contentBackground,
+                    borderRadius: BorderRadius.circular(10.r),
+                    child: Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10.r),
+                        gradient: const LinearGradient(
+                            colors: [
+                              AppColor.linearColor1,
+                              AppColor.linearColor2,
+                            ],
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight),
+                      ),
+                      alignment: Alignment.center,
+                      child: Text(
+                        'আরো যোগ করুন',
+                        style: GoogleFonts.notoSerifBengali(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.navColor,
+                        ),
+                      ),
+                    ),
+                  ),
+                const  SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +129,9 @@ class AddNewInfoScreen extends StatelessWidget {
                       height: 20.h,
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        alertDialog(context);
+                      },
                       // splashColor: AppColor.contentBackground,
                       splashColor: AppColor.contentBackground,
                       borderRadius: BorderRadius.circular(10.r),
@@ -79,7 +169,7 @@ class AddNewInfoScreen extends StatelessWidget {
     );
   }
 
-//user input via TextField, its dummy that is why skip controller 
+//user input via TextField, its dummy that is why skip controller
   Widget addNewData() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

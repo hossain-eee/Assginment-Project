@@ -12,6 +12,7 @@ class ImageAssets {
   //images
   static const String _imagePath = "assets/images";
   static const String person = "$_imagePath/person.png";
+  static const String checkPng = "$_imagePath/Checked.png";
   //menu icon
   static const String personIconPng = "$_iconPath/person_icon.png";
   static const String homeIcon = "$_iconPath/home.png";
