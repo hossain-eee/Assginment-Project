@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 
 class ShowApiData extends StatelessWidget {
-  const ShowApiData(
+  ShowApiData(
       {super.key,
       required this.date,
       required this.name,
@@ -16,9 +18,13 @@ class ShowApiData extends StatelessWidget {
   final String name;
   final String category;
   final String location;
-
+  final TimeLineController timeLineController = Get.find<TimeLineController>();
   @override
   Widget build(BuildContext context) {
+    var time =
+        timeLineController.convertTimestampToBengaliTime(int.parse(date));
+    var timeWithAmPm =
+        timeLineController.convertTimestampToBengaliTimeAmPm(int.parse(date));
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       child: Container(
@@ -28,9 +34,22 @@ class ShowApiData extends StatelessWidget {
           borderRadius: BorderRadius.circular(15.r),
         ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            //left side time with সকাল/দুপুর
+            Text(
+              timeWithAmPm,
+              style: GoogleFonts.notoSerifBengali(
+                fontSize: 14.sp,
+                color: AppColor.boldFont,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            SizedBox(
+              width: 30.w,
+            ),
+            /*    Container(
               width: 60.w,
               padding: EdgeInsets.all(8.w),
               alignment: Alignment.center,
@@ -42,7 +61,7 @@ class ShowApiData extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-            ),
+            ), */
             // Right side details
             Expanded(
               child: Container(
@@ -64,7 +83,7 @@ class ShowApiData extends StatelessWidget {
                         SizedBox(width: 6.w),
                         Expanded(
                           child: Text(
-                            date,
+                            time,
                             style: GoogleFonts.notoSerifBengali(
                               fontSize: 12.sp,
                               color: AppColor.navColor,
@@ -105,6 +124,7 @@ class ShowApiData extends StatelessWidget {
                           ImageAssets.location,
                           width: 20.w,
                           height: 20.h,
+                          color: AppColor.navColor,
                         ),
                         SizedBox(width: 6.w),
                         Expanded(
