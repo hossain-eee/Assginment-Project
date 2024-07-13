@@ -66,7 +66,7 @@ class AppBarWidget extends StatelessWidget {
       children: [
         SvgPicture.asset(
           ImageAssets.menuSvg,
-          width: 24.w,
+          width: 23.w,
           height: 24.h,
           fit: BoxFit.cover,
         ),
