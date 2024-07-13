@@ -57,7 +57,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                       height: 15.h,
                     ),
                     Container(
-                        height: 320.h,
+                        height: 360.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                             // border: Border.all(color: Colors.red),

@@ -19,7 +19,7 @@ class _PreviousAndUpcomming7DaysState extends State<PreviousAndUpcomming7Days> {
   PreviUpcom7DayController controller7Days =
       Get.find<PreviUpcom7DayController>();
   TimeLineController controller = Get.find<TimeLineController>();
-   final NetworkController networkController = Get.find<NetworkController>();
+  final NetworkController networkController = Get.find<NetworkController>();
   @override
   void initState() {
     controller7Days.sevenDaysPreviuosUpcomingDay();
@@ -47,7 +47,12 @@ class _PreviousAndUpcomming7DaysState extends State<PreviousAndUpcomming7Days> {
             itemBuilder: (context, index) {
               var data = controller7Days.totalDay[index];
               return UnconstrainedBox(
-                child: GestureDetector(
+                child: InkWell(
+                  splashColor: Colors.grey[400],
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(30.r),
+                    bottom: Radius.circular(30.r),
+                  ),
                   onTap: () {
                     //pass the date index by click, here index is nullable
                     controller7Days.getEpochTimeDate(index: index);
