@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
+import 'package:soft_bd/presentation/ui/screens/add_new_info_screen.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class HeadContentTimeLine extends StatelessWidget {
   const HeadContentTimeLine({
     super.key,
@@ -27,19 +30,17 @@ class HeadContentTimeLine extends StatelessWidget {
         InkWell(
           splashColor: AppColor.contentBackground,
           borderRadius: BorderRadius.circular(30),
-          onTap: () {},
+          onTap: () {
+            Get.to(() => AddNewInfoScreen(), transition: Transition.cupertino);
+          },
           child: Container(
             width: 100.w,
             height: 50.h,
-            padding: EdgeInsets.symmetric(
-                horizontal: 6.w, vertical: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               gradient: const LinearGradient(
-                colors: [
-                  AppColor.linearColor1,
-                  AppColor.linearColor2
-                ],
+                colors: [AppColor.linearColor1, AppColor.linearColor2],
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
