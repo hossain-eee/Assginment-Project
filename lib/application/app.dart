@@ -19,6 +19,7 @@ class SoftBd extends StatelessWidget {
         return GetMaterialApp(
           title: 'Flutter Demo',
           initialBinding: StateHolderBindings(),
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
