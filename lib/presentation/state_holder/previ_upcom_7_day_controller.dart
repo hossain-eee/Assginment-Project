@@ -58,7 +58,7 @@ class PreviUpcom7DayController extends GetxController {
       case 3:
         return 'বুধ';
       case 4:
-        return 'বৃহস্পতি';
+        return 'বৃহঃ';
       case 5:
         return 'শুক্র';
       case 6:
@@ -85,7 +85,7 @@ Compare current date (DateTime.now()) or user selected day (form previous or upc
       userEpochTimeDate.value = epochToDate(_totalDay[index].epochTime);
     } else {
       userEpochTimeDate.value =
-          epochToDate(DateTime.now().millisecondsSinceEpoch~/1000);
+          epochToDate(DateTime.now().millisecondsSinceEpoch ~/ 1000);
     }
   }
 }
