@@ -33,7 +33,6 @@ class ShowApiData extends StatelessWidget {
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.yellowAccent),
           borderRadius: BorderRadius.circular(15.r),
         ),
         child: Row(
