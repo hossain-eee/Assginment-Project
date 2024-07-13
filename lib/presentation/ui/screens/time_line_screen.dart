@@ -23,6 +23,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
   PreviUpcom7DayController controller7Days =
       Get.find<PreviUpcom7DayController>();
   final NetworkController networkController = Get.find<NetworkController>();
+  bool isDataExitOnDate = true;
   @override
   void initState() {
     //called api here to avoid unnecessary api calling, this method will run only once, insted of calling it inside Build() method.
@@ -33,10 +34,11 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+      body: Container(
+        // decoration: BoxDecoration(border: Border.all(color: Colors.deepOrange)),
         width: 375.w,
-        height: 812.h,
-        child: Column(
+        height: 640.h,
+        child: ListView(
           children: [
             const AppBarWidget(text: 'সময়রেখা'),
             Padding(
@@ -55,19 +57,19 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                       height: 15.h,
                     ),
                     Container(
-                        height: 365.h,
+                        height: 285.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                             // border: Border.all(color: Colors.red),
                             color: AppColor.navColor,
                             borderRadius: BorderRadius.circular(15.r),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
-                                color: Color(
+                                color: const Color(
                                     0x26000000), // This is the equivalent of #00000026
-                                blurRadius: 3,
+                                blurRadius: 3.r,
                                 spreadRadius: 0,
-                                offset: Offset(0, 0),
+                                offset: const Offset(0, 0),
                               ),
                             ]),
                         child: Padding(
@@ -90,13 +92,14 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                               GetBuilder<NetworkController>(
                                   builder: (netCntrl) {
                                 if (netCntrl.dataInProgress) {
-                                  return const SizedBox(
-                                    height: 180,
-                                    child: Center(
+                                  return SizedBox(
+                                    height: 180.h,
+                                    child: const Center(
                                       child: CircularProgressIndicator(),
                                     ),
                                   );
                                 }
+
                                 return Expanded(
                                   child: ListView.builder(
                                       itemCount:
@@ -118,6 +121,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                                         // print("apiDate: $apiDate");
                                         print('user Date : $userSelectDate');
                                         if (apiDate.contains(userSelectDate)) {
+                                          isDataExitOnDate = false;
                                           return ShowApiData(
                                             date: date,
                                             name: name,
@@ -126,7 +130,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                                             index: index,
                                           );
                                         }
-                                        return SizedBox();
+                                        return const SizedBox();
                                       }),
                                 );
                               }),
