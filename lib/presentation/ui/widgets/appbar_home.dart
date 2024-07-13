@@ -4,14 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/image_assets.dart';
 
-class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key, this.image, required this.text});
+class AppBarHome extends StatelessWidget {
+  const AppBarHome({super.key, this.image, required this.text});
   final String? image;
   final String text;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 30.h),
+      padding: EdgeInsets.only(top: 45.h),
       child: Container(
         width: 375.w,
         height: 81.h,
