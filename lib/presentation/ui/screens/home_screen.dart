@@ -43,14 +43,14 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Container(
                 width: 327.w,
-                height: 580.h,
+                height: 510.h, 
                 /*   decoration:
                     BoxDecoration(border: Border.all(color: Colors.red)), */
                 child: Column(
                   children: [
                     UserInfo(),
                     SizedBox(
-                      height: 20.h,
+                      height: 10.h,
                     ),
                     //timer section
                     Padding(
