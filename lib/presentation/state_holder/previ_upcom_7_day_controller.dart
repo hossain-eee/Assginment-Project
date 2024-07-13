@@ -1,16 +1,19 @@
 import 'package:get/get.dart';
 import 'package:soft_bd/application/data/model/date_day_calculation_model.dart';
 
-class PreviUpcom7DayController extends GetxController{
-    List<DateDayCalculationModel> _totalDay = []; //previousAndUpcomming7Days, total 15 days
+class PreviUpcom7DayController extends GetxController {
+  List<DateDayCalculationModel> _totalDay =
+      []; //previousAndUpcomming7Days, total 15 days
   List<DateDayCalculationModel> get totalDay => _totalDay;
+  //user initial epoch time
+  final RxString userEpochTimeDate = ''.obs;
   //convert milliSecondSinceEpoch to Epoch Second
   int milliSecEpochToEpoch(int millisecondsSinceEpoch) {
     int epochTimeInMilliseconds = millisecondsSinceEpoch;
     int epochTimeInSeconds = (epochTimeInMilliseconds / 1000)
         .round(); // Use round to get an integer value
-    
-    return epochTimeInSeconds;// Output will be the epoch time in seconds
+
+    return epochTimeInSeconds; // Output will be the epoch time in seconds
   }
 
   void sevenDaysPreviuosUpcomingDay() {
@@ -44,10 +47,10 @@ class PreviUpcom7DayController extends GetxController{
     //now merge tow array list into one list
     _totalDay = [...sevenDayBack, ...sevenDayUpcoming];
   }
+
   //DateTime.now().day--first day is Mon and last day is sun
-    String getBanglaDayName(int weekday) {
+  String getBanglaDayName(int weekday) {
     switch (weekday) {
-      
       case 1:
         return 'সোম';
       case 2:
@@ -60,10 +63,29 @@ class PreviUpcom7DayController extends GetxController{
         return 'শুক্র';
       case 6:
         return 'শনি';
-        case 7:
+      case 7:
         return 'রবি';
       default:
         return '';
+    }
+  }
+
+/* fetch api data according to epoch time,
+Compare current date (DateTime.now()) or user selected day (form previous or upcoming day) to api epoch to fetch data*/
+
+  //epochMilliSecond time to date convert, result will be like 2024-07-11
+  String epochToDate(int epochTime) {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(epochTime * 1000);
+    return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
+  }
+
+  //get user epoch time Date by catch index (when click)
+  void getEpochTimeDate({int? index}) {
+    if (index != null) {
+      userEpochTimeDate.value = epochToDate(_totalDay[index].epochTime);
+    } else {
+      userEpochTimeDate.value =
+          epochToDate(DateTime.now().millisecondsSinceEpoch~/1000);
     }
   }
 }
