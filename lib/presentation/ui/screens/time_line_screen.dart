@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/network_controller.dart';
+import 'package:soft_bd/presentation/state_holder/previ_upcom_7_day_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
 import 'package:soft_bd/presentation/ui/screens/prevvious_upcoming_7_days.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
@@ -19,7 +20,8 @@ class TimeLineScreen extends StatefulWidget {
 
 class _TimeLineScreenState extends State<TimeLineScreen> {
   final TimeLineController timeLineController = Get.find<TimeLineController>();
-
+  PreviUpcom7DayController controller7Days =
+      Get.find<PreviUpcom7DayController>();
   final NetworkController networkController = Get.find<NetworkController>();
   @override
   void initState() {
@@ -120,14 +122,23 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                                             apiData[index].category!;
                                         String location =
                                             apiData[index].location!;
-                                        // return Text(name);
-                                        return ShowApiData(
-                                          date: date,
-                                          name: name,
-                                          category: category,
-                                          location: location,
-                                          index: index,
-                                        );
+                                        //compare for match data loading
+                                        String userSelectDate = controller7Days
+                                            .userEpochTimeDate.value;
+                                        String apiDate = controller7Days
+                                            .epochToDate(int.parse(date));
+                                        // print("apiDate: $apiDate");
+                                        print('user Date : $userSelectDate');
+                                        if (apiDate.contains(userSelectDate)) {
+                                          return ShowApiData(
+                                            date: date,
+                                            name: name,
+                                            category: category,
+                                            location: location,
+                                            index: index,
+                                          );
+                                        }
+                                        return SizedBox();
                                       }),
                                 );
                               }),
