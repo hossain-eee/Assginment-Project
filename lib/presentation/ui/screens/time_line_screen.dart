@@ -57,7 +57,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                       height: 15.h,
                     ),
                     Container(
-                        height: 300.h,
+                        height: 320.h,
                         width: double.infinity,
                         decoration: BoxDecoration(
                             // border: Border.all(color: Colors.red),
@@ -110,7 +110,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                                         );
                                       }
 
-                                      // Filtered list of items that match the date condition 
+                                      // Filtered list of items that match the date condition
                                       var filteredData = netCntrl.dataModel.data
                                           ?.where((item) {
                                         String apiDate = controller7Days
