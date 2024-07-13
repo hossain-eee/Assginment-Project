@@ -117,6 +117,7 @@ class TimeLineScreen extends StatelessWidget {
                                             name: name,
                                             category: category,
                                             location: location,
+                                            index: index,
                                           );
                                         }),
                                   );

@@ -13,11 +13,14 @@ class ShowApiData extends StatelessWidget {
       required this.date,
       required this.name,
       required this.category,
-      required this.location});
+      required this.location,
+      required this.index});
   final String date;
   final String name;
   final String category;
   final String location;
+  final int
+      index; // set condition for color, zero and odd value green even value black (index%2==0 for all even number also zero is true, else are odd)
   final TimeLineController timeLineController = Get.find<TimeLineController>();
   @override
   Widget build(BuildContext context) {
@@ -42,33 +45,38 @@ class ShowApiData extends StatelessWidget {
               timeWithAmPm,
               style: GoogleFonts.notoSerifBengali(
                 fontSize: 14.sp,
-                color: AppColor.boldFont,
+                color: index % 2 == 0 ? AppColor.boldFont : AppColor.textBlue,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(
               width: 30.w,
             ),
-            /*    Container(
-              width: 60.w,
-              padding: EdgeInsets.all(8.w),
-              alignment: Alignment.center,
-              child: Text(
-                date,
-                style: GoogleFonts.notoSerifBengali(
-                  fontSize: 12.sp,
-                  color: AppColor.navColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ), */
+
             // Right side details
             Expanded(
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.r),
-                  color: Colors.green,
+                  gradient: index % 2 == 0
+                      ? const LinearGradient(
+                          colors: [
+                            AppColor.linearColor1,
+                            AppColor.linearColor2,
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        )
+                      : const LinearGradient(
+                          colors: [
+                            AppColor.boldFont,
+                            AppColor.boldFont,
+                          ],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        ),
+                  // color: Colors.green,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

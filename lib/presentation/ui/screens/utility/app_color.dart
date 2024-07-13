@@ -6,6 +6,8 @@ class AppColor {
   static const Color boldFont = Color(0xFF202020);
   static const Color normalFont = Color(0xFF6A6A6A); // Defined color #6A6A6A
   static const Color redFont = Color(0xFFFF737A); //background: #FF737A;
+  static const Color textBlue = Color(0xFF2A61EE); //background: #2A61EE;
+
 //navigation bar color
   static const Color navColor = Color(0xFFFDFDFD);
   // Defined color #6A6A6A
