@@ -50,19 +50,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    PreviousAndUpcomming7Days(),
-                    /*    Card(
-                      elevation: 1,
-                      child: Container(
-                        height: 86.39.h,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue.shade400),
-                        ),
-                        alignment: Alignment.center,
-                        child: const Text('Bengali Canlender'),
-                      ),
-                    ), */
+                    const PreviousAndUpcomming7Days(),
                     SizedBox(
                       height: 15.h,
                     ),
