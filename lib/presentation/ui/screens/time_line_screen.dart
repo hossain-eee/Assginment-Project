@@ -23,7 +23,7 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
   PreviUpcom7DayController controller7Days =
       Get.find<PreviUpcom7DayController>();
   final NetworkController networkController = Get.find<NetworkController>();
-  bool isDataExitOnDate = true;
+  String selectedDate = '';
   @override
   void initState() {
     //called api here to avoid unnecessary api calling, this method will run only once, insted of calling it inside Build() method.
@@ -101,37 +101,50 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                                 }
 
                                 return Expanded(
-                                  child: ListView.builder(
-                                      itemCount:
-                                          netCntrl.dataModel.data?.length ?? 0,
-                                      itemBuilder: (context, index) {
-                                        var apiData = netCntrl.dataModel.data;
-                                        String name =
-                                            apiData?[index].name ?? 'Unnamed';
-                                        String date = apiData![index].date!;
-                                        String category =
-                                            apiData[index].category!;
-                                        String location =
-                                            apiData[index].location!;
-                                        //compare for match data loading
+                                  child: GetBuilder<NetworkController>(
+                                    builder: (netCntrl) {
+                                      // Check if data is in progress
+                                      if (netCntrl.dataInProgress) {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      }
+
+                                      // Filtered list of items that match the date condition 
+                                      var filteredData = netCntrl.dataModel.data
+                                          ?.where((item) {
+                                        String apiDate = controller7Days
+                                            .epochToDate(int.parse(item.date!));
                                         String userSelectDate = controller7Days
                                             .userEpochTimeDate.value;
-                                        String apiDate = controller7Days
-                                            .epochToDate(int.parse(date));
-                                        // print("apiDate: $apiDate");
-                                        print('user Date : $userSelectDate');
-                                        if (apiDate.contains(userSelectDate)) {
-                                          isDataExitOnDate = false;
+                                        selectedDate = userSelectDate;
+                                        return apiDate.contains(userSelectDate);
+                                      }).toList();
+
+                                      // If filtered data is empty, show 'No data found for today'
+                                      if (filteredData!.isEmpty) {
+                                        return Center(
+                                          child: Text(
+                                              'No data found for $selectedDate'),
+                                        );
+                                      }
+
+                                      // Show ListView of items that match the condition
+                                      return ListView.builder(
+                                        itemCount: filteredData.length,
+                                        itemBuilder: (context, index) {
+                                          var apiData = filteredData[index];
                                           return ShowApiData(
-                                            date: date,
-                                            name: name,
-                                            category: category,
-                                            location: location,
+                                            date: apiData.date!,
+                                            name: apiData.name ?? 'Unnamed',
+                                            category: apiData.category!,
+                                            location: apiData.location!,
                                             index: index,
                                           );
-                                        }
-                                        return const SizedBox();
-                                      }),
+                                        },
+                                      );
+                                    },
+                                  ),
                                 );
                               }),
                             ],
