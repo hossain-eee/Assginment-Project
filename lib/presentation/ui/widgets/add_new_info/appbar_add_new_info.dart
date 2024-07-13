@@ -10,7 +10,7 @@ class AppbarAddNewInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 45.h),
+      padding: EdgeInsets.only(top: 50.h),
       child: Container(
         width: 375.w,
         height: 81.h,

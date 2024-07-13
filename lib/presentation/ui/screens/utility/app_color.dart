@@ -22,4 +22,11 @@ class AppColor {
 //Linear gradient color
   static const Color linearColor1 = Color(0xFF86B560);
   static const Color linearColor2 = Color(0xFF336F4A);
+  //textField color
+  static const Color textFieldColor = Color(0xFFF2F2F2);
+
+  //hint text color 
+ 
+  static const Color hintTextColor = Color(0xFF6A6A6A);
+
 }
