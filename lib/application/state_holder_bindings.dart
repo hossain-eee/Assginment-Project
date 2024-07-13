@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:soft_bd/presentation/state_holder/date_controller.dart';
 import 'package:soft_bd/presentation/state_holder/network_controller.dart';
+import 'package:soft_bd/presentation/state_holder/previ_upcom_7_day_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
 
 class StateHolderBindings extends Bindings {
@@ -9,5 +10,6 @@ class StateHolderBindings extends Bindings {
     Get.put(DateController());
     Get.put(TimeLineController());
     Get.put(NetworkController());
+    Get.put(PreviUpcom7DayController());
   }
 }
