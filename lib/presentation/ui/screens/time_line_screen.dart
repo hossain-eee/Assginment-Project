@@ -6,8 +6,8 @@ import 'package:soft_bd/presentation/state_holder/network_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/widgets/appbar_widget.dart';
-import 'package:soft_bd/presentation/ui/widgets/home/time_line/head_content.dart';
-import 'package:soft_bd/presentation/ui/widgets/home/time_line/show_api_data.dart';
+import 'package:soft_bd/presentation/ui/widgets/time_line/head_content.dart';
+import 'package:soft_bd/presentation/ui/widgets/time_line/show_api_data.dart';
 
 class TimeLineScreen extends StatefulWidget {
   TimeLineScreen({super.key});
