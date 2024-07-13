@@ -43,9 +43,10 @@ class HomeScreen extends StatelessWidget {
               ),
               child: Container(
                 width: 327.w,
-                height: 510.h, 
-                /*   decoration:
-                    BoxDecoration(border: Border.all(color: Colors.red)), */
+                height: 510.h,
+                /*    decoration: BoxDecoration(
+                  border: Border.all(color: Colors.red),
+                ), */
                 child: Column(
                   children: [
                     UserInfo(),
@@ -54,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     //timer section
                     Padding(
-                      padding: EdgeInsets.only(top: 2.h),
+                      padding: EdgeInsets.only(top: 1.h),
                       child: Row(
                         children: [
                           const CountingCircularProgressBar(),
@@ -66,7 +67,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 15.h,
+                      height: 10.h,
                     ),
                     Expanded(
                       child: GridView.builder(
@@ -74,8 +75,8 @@ class HomeScreen extends StatelessWidget {
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
-                            mainAxisSpacing: 25.h,
-                            crossAxisSpacing: 25.h,
+                            mainAxisSpacing: 5.h,
+                            crossAxisSpacing: 15.h,
                           ),
                           itemCount: contentIcon.length,
                           itemBuilder: (context, index) {
@@ -96,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-
+/* 
             SizedBox(
               height: 16.h,
             ),
@@ -105,7 +106,7 @@ class HomeScreen extends StatelessWidget {
             //bottomNavAppbar
             SizedBox(
               height: 20.h,
-            ),
+            ), */
           ],
         ),
       ),

@@ -12,13 +12,13 @@ class HomeCategory extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: SizedBox(
-          width: 80.w,
-          height: 140.h,
+          width: 70.w,
+          height: 100.h,
           child: Column(
             children: [
               Container(
-                width: 65.w,
-                height: 70.h,
+                width: 60.w,
+                height: 50.h,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: AppColor.contentBackground,
@@ -26,8 +26,8 @@ class HomeCategory extends StatelessWidget {
                 ),
                 child: Image.asset(
                   imagePath,
-                  width: 32.w,
-                  height: 35.h,
+                  width: 31.w,
+                  height: 34.h,
                 ),
               ),
               SizedBox(
