@@ -3,17 +3,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/date_controller.dart';
+import 'package:soft_bd/presentation/state_holder/network_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/widgets/appbar_widget.dart';
 import 'package:soft_bd/presentation/ui/widgets/home/time_line/head_content.dart';
+import 'package:soft_bd/presentation/ui/widgets/home/time_line/show_api_data.dart';
 
 class TimeLineScreen extends StatelessWidget {
   TimeLineScreen({super.key});
   final TimeLineController timeLineController = Get.find<TimeLineController>();
-
+  final NetworkController networkController = Get.find<NetworkController>();
   @override
   Widget build(BuildContext context) {
+    networkController.getData();
     return Scaffold(
       body: SizedBox(
         width: 375.w,
@@ -84,7 +87,40 @@ class TimeLineScreen extends StatelessWidget {
                                     color: AppColor.boldFont,
                                   ),
                                 ),
-                                
+                                GetBuilder<NetworkController>(
+                                    builder: (netCntrl) {
+                                  if (netCntrl.dataInProgress) {
+                                    return const SizedBox(
+                                      height: 180,
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    );
+                                  }
+                                  return Expanded(
+                                    child: ListView.builder(
+                                        itemCount:
+                                            netCntrl.dataModel.data?.length ??
+                                                0,
+                                        itemBuilder: (context, index) {
+                                          var apiData = netCntrl.dataModel.data;
+                                          String name =
+                                              apiData?[index].name ?? 'Unnamed';
+                                          String date = apiData![index].date!;
+                                          String category =
+                                              apiData![index].category!;
+                                          String location =
+                                              apiData![index].location!;
+                                          // return Text(name);
+                                          return ShowApiData(
+                                            date: date,
+                                            name: name,
+                                            category: category,
+                                            location: location,
+                                          );
+                                        }),
+                                  );
+                                }),
                               ],
                             ),
                           )),
@@ -98,4 +134,30 @@ class TimeLineScreen extends StatelessWidget {
       ),
     );
   }
+
+  /*  Widget showApiData(String date, String content, int index) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      child: Container(
+        width: double.infinity,
+        height: 150.h,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.green,
+            border: Border.all(color: Colors.yellowAccent)),
+        child: Row(
+          children: [
+            Text(date),
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.green,
+              ),
+              child: Text(content),
+            ),
+          ],
+        ),
+      ),
+    );
+  } */
 }

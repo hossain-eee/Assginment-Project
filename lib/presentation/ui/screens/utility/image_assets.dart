@@ -7,6 +7,7 @@ class ImageAssets {
   static const String menuSvg = "$_iconPath/menu.svg";
   static const String location = "$_iconPath/location.png";
   static const String calenderSvg = "$_iconPath/Calendar.svg";
+  static const String clockSvg = "$_iconPath/clock.svg";
 
   //images
   static const String _imagePath = "assets/images";
