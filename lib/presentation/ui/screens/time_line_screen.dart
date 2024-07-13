@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:soft_bd/presentation/state_holder/network_controller.dart';
 import 'package:soft_bd/presentation/state_holder/time_line_controller.dart';
+import 'package:soft_bd/presentation/ui/screens/prevvious_upcoming_7_days.dart';
 import 'package:soft_bd/presentation/ui/screens/utility/app_color.dart';
 import 'package:soft_bd/presentation/ui/widgets/appbar_widget.dart';
 import 'package:soft_bd/presentation/ui/widgets/time_line/head_content.dart';
@@ -37,17 +38,18 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
           children: [
             const AppBarWidget(text: 'সময়রেখা'),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.h),
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
               child: SizedBox(
                 width: 323.w,
-                height: 552.h,
+                height: 560.h,
                 child: Column(
                   children: [
                     HeadContentTimeLine(timeLineController: timeLineController),
                     SizedBox(
-                      height: 20.h,
+                      height: 10.h,
                     ),
-                    Card(
+                    PreviousAndUpcomming7Days(),
+                    /*    Card(
                       elevation: 1,
                       child: Container(
                         height: 86.39.h,
@@ -58,9 +60,9 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                         alignment: Alignment.center,
                         child: const Text('Bengali Canlender'),
                       ),
-                    ),
+                    ), */
                     SizedBox(
-                      height: 20.h,
+                      height: 15.h,
                     ),
                     Container(
                         height: 365.h,
