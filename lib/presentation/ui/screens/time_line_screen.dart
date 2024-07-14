@@ -56,100 +56,102 @@ class _TimeLineScreenState extends State<TimeLineScreen> {
                     SizedBox(
                       height: 15.h,
                     ),
-                    Container(
-                        height: 360.h,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            // border: Border.all(color: Colors.red),
-                            color: AppColor.navColor,
-                            borderRadius: BorderRadius.circular(15.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: const Color(
-                                    0x26000000), // This is the equivalent of #00000026
-                                blurRadius: 3.r,
-                                spreadRadius: 0,
-                                offset: const Offset(0, 0),
-                              ),
-                            ]),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 12.w,
-                            vertical: 10.h,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'আজকের কার্যক্রম',
-                                style: GoogleFonts.notoSerifBengali(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColor.boldFont,
+                    Expanded(
+                      child: Container(
+                          height: 360.h,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              // border: Border.all(color: Colors.red),
+                              color: AppColor.navColor,
+                              borderRadius: BorderRadius.circular(15.r),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: const Color(
+                                      0x26000000), // This is the equivalent of #00000026
+                                  blurRadius: 3.r,
+                                  spreadRadius: 0,
+                                  offset: const Offset(0, 0),
                                 ),
-                              ),
-                              GetBuilder<NetworkController>(
-                                  builder: (netCntrl) {
-                                if (netCntrl.dataInProgress) {
-                                  return SizedBox(
-                                    height: 180.h,
-                                    child: const Center(
-                                      child: CircularProgressIndicator(),
+                              ]),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 12.w,
+                              vertical: 10.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'আজকের কার্যক্রম',
+                                  style: GoogleFonts.notoSerifBengali(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColor.boldFont,
+                                  ),
+                                ),
+                                GetBuilder<NetworkController>(
+                                    builder: (netCntrl) {
+                                  if (netCntrl.dataInProgress) {
+                                    return SizedBox(
+                                      height: 180.h,
+                                      child: const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    );
+                                  }
+                      
+                                  return Expanded(
+                                    child: GetBuilder<NetworkController>(
+                                      builder: (netCntrl) {
+                                        // Check if data is in progress
+                                        if (netCntrl.dataInProgress) {
+                                          return const Center(
+                                            child: CircularProgressIndicator(),
+                                          );
+                                        }
+                      
+                                        // Filtered list of items that match the date condition
+                                        var filteredData = netCntrl.dataModel.data
+                                            ?.where((item) {
+                                          String apiDate = controller7Days
+                                              .epochToDate(int.parse(item.date!));
+                                          String userSelectDate = controller7Days
+                                              .userEpochTimeDate.value;
+                                          selectedDate = userSelectDate;
+                                          return apiDate.contains(userSelectDate);
+                                        }).toList();
+                      
+                                        // If filtered data is empty, show 'No data found for today'
+                                        if (filteredData!.isEmpty) {
+                                          return Center(
+                                            child: Text(
+                                                'No data found for $selectedDate'),
+                                          );
+                                        }
+                      
+                                        // Show ListView of items that match the condition
+                                        return ListView.builder(
+                                          itemCount: filteredData.length,
+                                          itemBuilder: (context, index) {
+                                            var apiData = filteredData[index];
+                                            return ShowApiData(
+                                              date: apiData.date!,
+                                              name: apiData.name ?? 'Unnamed',
+                                              category: apiData.category!,
+                                              location: apiData.location!,
+                                              index: index,
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
                                   );
-                                }
-
-                                return Expanded(
-                                  child: GetBuilder<NetworkController>(
-                                    builder: (netCntrl) {
-                                      // Check if data is in progress
-                                      if (netCntrl.dataInProgress) {
-                                        return const Center(
-                                          child: CircularProgressIndicator(),
-                                        );
-                                      }
-
-                                      // Filtered list of items that match the date condition
-                                      var filteredData = netCntrl.dataModel.data
-                                          ?.where((item) {
-                                        String apiDate = controller7Days
-                                            .epochToDate(int.parse(item.date!));
-                                        String userSelectDate = controller7Days
-                                            .userEpochTimeDate.value;
-                                        selectedDate = userSelectDate;
-                                        return apiDate.contains(userSelectDate);
-                                      }).toList();
-
-                                      // If filtered data is empty, show 'No data found for today'
-                                      if (filteredData!.isEmpty) {
-                                        return Center(
-                                          child: Text(
-                                              'No data found for $selectedDate'),
-                                        );
-                                      }
-
-                                      // Show ListView of items that match the condition
-                                      return ListView.builder(
-                                        itemCount: filteredData.length,
-                                        itemBuilder: (context, index) {
-                                          var apiData = filteredData[index];
-                                          return ShowApiData(
-                                            date: apiData.date!,
-                                            name: apiData.name ?? 'Unnamed',
-                                            category: apiData.category!,
-                                            location: apiData.location!,
-                                            index: index,
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                );
-                              }),
-                            ],
-                          ),
-                        )),
+                                }),
+                              ],
+                            ),
+                          )),
+                    ),
                   ],
                 ),
               ),
